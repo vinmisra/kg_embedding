@@ -1,0 +1,8 @@
+Name,machine,emb type,dataset,val frac,# pos,# neg,train sample,val sample,feature 1,feature 2,xform 1,xform 2,xform 3,xform 4,xform 5,val loss expected
+O1,mbpro,observable,KG_233,0.001,10k,10k,unigram,unigram,common,"AA log,-.5,-.3",**1,**2,**.5,**.3,log,0.51
+O2,mbpro,observable,KG_233,0.05,10k,10k,unigram,unigram,common,"AA log,-.5,-.3",**1,**2,**.5,**.3,log,1.015213791
+O3,mbpro,observable,KG_233,0.05,100k,100k,uniform,uniform,common,"AA log,-.5,-.3",**1,**2,**.5,**.3,log,0.2964814508
+O4,mbpro,observable,KG_233,0.05,100k,100k,unigram,unigram,common,"AA log,-.5,-.3",**1,**2,**.5,**.3,log,0.5161735735
+,,,,,,,,,,,,,,,,
+O5,mbpro,observable,wordnet,0.05,1k,1k,uniform,uniform,common,"AA log,-.5,-.3",**1,**2,**.5,**.3,log,0.7351857384
+O6,mbpro,observable,wordnet,0.05,100k,100k,uniform,uniform,common,"AA log,-.5,-.3",**1,**2,**.5,**.3,log,0.6629187525
