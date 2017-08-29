@@ -14,8 +14,10 @@ import hypers_NCE as HypersModule #local module including all user-defined hyper
 #experiment parameters
 #BASE_DIR = '/ceph/vinith/kg/embedding/' #piazza-vm03
 #BASE_DIR = '/home/vmisra/data/kg' #piazza-watson03
-BASE_DIR = '/home/vmisra' #piazza-watson02, pok machines
-#BASE_DIR = '/Users/vmisra/data/kg_embed_data' #local macbook
+# BASE_DIR = '/home/vmisra' #piazza-watson02, pok machines
+# BASE_DIR = '/Users/vmisra/data/kg_embed_data' #local macbook
+BASE_DIR = '/Users/vmisra/kgdata' #local macbook v2
+
 if len(sys.argv) < 2:
     print "not enough arguments"
     sys.exit(0)
@@ -93,7 +95,8 @@ for hyper in hypers.items(): print hyper
 #load data
 print "loading data"
 if hypers['DATASET']=='KG':
-    data,_ = pickle.load(open(hypers['PATH_DATA'],'r'))
+    data = pickle.load(open(hypers['PATH_DATA'], 'r'))
+    # data,_ = pickle.load(open(hypers['PATH_DATA'],'r'))
 elif hypers['DATASET']=='WORDNET':
     data,_,_ = pickle.load(open(hypers['PATH_DATA'],'r'))
 elif hypers['DATASET'] in ['SLASHDOT','FLICKR','BLOGCATALOG']:
