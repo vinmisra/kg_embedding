@@ -55,7 +55,7 @@ start_time = time.time()
 print observables_scoring_rank(idxs = np.array([10,20]))
 print time.time()-start_time
 
-print "timing reranking time for 2 samples and a subset of 10 indices"
+print "timing reranking time for 2 samples and a subset of 3 indices"
 start_time = time.time()
-print observables_scoring_rank(idxs = np.array([10,20]), shortlist_list_of_arrays = [np.array([1,2]), np.array([3,4])])
+print observables_scoring_rerank(idxs = np.array([10,20]), shortlist_list_of_arrays = [np.array([1,2,3]), np.array([3,4,5])])
 print time.time()-start_time

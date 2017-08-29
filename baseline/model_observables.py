@@ -304,8 +304,9 @@ def get_common_neighbors_all(graph,idxs):
 def get_common_neighbors_subset(graph,idxs,subset_list_of_arrays):
     n_entities = graph.shape[0]
     common_neighbors = []
+
     for i,(idx,subset_array) in enumerate(zip(idxs,subset_list_of_arrays)):
-        common_neighbors.append(graph[subset_array].getrow(idx).dot(graph.transpose()).toarray()[0])
+        common_neighbors.append(graph.getrow(idx).dot(graph[subset_array].transpose()).toarray()[0])
     return np.vstack(common_neighbors)
 
 def get_AA_all(graph,idxs,func=lambda x: 1/(1.0+np.log(x+1))):
@@ -316,8 +317,9 @@ def get_AA_all(graph,idxs,func=lambda x: 1/(1.0+np.log(x+1))):
 
     n_entities = graph.shape[0]
     AA_features = np.zeros(n_entities*len(idxs))
+
     for i,idx in enumerate(idxs):
-        AA_features[i*n_entities:(i+1)*n_entities] = np.squeeze(graph.dot(graph.getrow(idx).multiply(AA_weights).transpose()))
+        AA_features[i*n_entities:(i+1)*n_entities] = np.squeeze(np.array(graph.dot(graph.getrow(idx).multiply(AA_weights).transpose()).todense()))
 
     return AA_features
 
@@ -329,8 +331,9 @@ def get_AA_subset(graph, idxs, subset_list_of_arrays, func =lambda x: 1/(1.0+np.
     AA_weights = func(n_neighbors)
 
     AA_features = []
+    # import pdb; pdb.set_trace()
     for i,(idx,subset_array) in enumerate(zip(idxs,subset_list_of_arrays)):
-        AA_features.append(np.squeeze(graph[subset_array].dot(graph.getrow(idx).multiply(AA_weights).transpose())))
+        AA_features.append(np.squeeze(np.array(graph[subset_array].dot(graph.getrow(idx).multiply(AA_weights).transpose()).todense())))
 
     return np.vstack(AA_features)
 
